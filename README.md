@@ -9,7 +9,7 @@ Autori
 "rm -rf /"
 - xschabt00 Tomáš Schablický
 - xsamelm00 Marek Samel
-- xlogin03 jmeno prijmeni 
+- xsubrtj00 Jeremy Šubrt 
 - xlogin04 jmeno prijmeni 
 
 Licence
