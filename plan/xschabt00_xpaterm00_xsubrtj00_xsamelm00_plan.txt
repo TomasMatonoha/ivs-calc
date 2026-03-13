@@ -8,7 +8,7 @@
 
 	26. 4. 2026 - Vytvořený Makefile, funkční instalátor/odinstalátor, vygenerovaná a sepsaná dokumentace
 
-	28. 4. 2026 - Finální testování kompletního balíku na testovacím virtuálním prostředí (Ubuntu/Windows)
+	28. 4. 2026 - Finální testování kompletního balíku na testovacím virtuálním prostředí (Ubuntu)
 
 
 2. Přidělení úkolů jednotlivým řešitelům
