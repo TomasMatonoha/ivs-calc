@@ -1,0 +1,46 @@
+1. Stanovené termíny
+
+	19. 3. 2026 - Hotové rozhraní funkcí a napsané testy pro TDD
+
+	29. 3. 2026 - Dokončená implementace matematické knihovny a základy GUI
+
+	12. 4. 2026 - Hotový profiling, propojení GUI s logikou, mockup
+
+	26. 4. 2026 - Vytvořený Makefile, funkční instalátor/odinstalátor, vygenerovaná a sepsaná dokumentace
+
+	28. 4. 2026 - Finální testování kompletního balíku na testovacím virtuálním prostředí (Ubuntu/Windows)
+
+
+2. Přidělení úkolů jednotlivým řešitelům
+
+    xschabt00 Tomáš Schablický (Vedoucí): Projektové řízení, komunikace, vytvoření testovací sady pro matematickou knihovnu (TDD), uživatelská dokumentace (příručka), nastavení generování programové dokumentace.
+
+    xsamelm00 Marek Samel: Správa repozitáře, vytvoření Makefile, řešení závislostí, vytvoření instalátoru a odinstalátoru.
+
+    xsubrtj00 Jeremy Šubrt: Návrh a implementace grafického uživatelského rozhraní, propojení GUI s matematickou knihovnou, ošetření výpisů chyb uživateli, vytvoření mockupu budoucí verze, nápověda v programu.
+
+    xpaterm00 Marie Patermannová: Implementace matematické logiky a volitelné funkce (logaritmus), debugging, vytvoření CLI programu pro výpočet směrodatné odchylky, provedení profilování a sepsání zprávy z profilování.
+
+
+3. Komunikační kanály a pravidla
+
+    Kanály: Pro rychlou textovou a hlasovou komunikaci využíváme Discord. Pro organizaci úkolů využíváme Trello.
+
+    Pravidla: * Pravidelný hovor probíhá jednou týdně.
+
+        Na zprávy týkající se projektu reagujeme nejpozději do 24 hodin.
+
+        Při nahrávání kódu používáme smysluplné a stručné anglické zprávy.
+
+        Kód v repozitáři se schvaluje formou Pull Requestů.
+
+
+4. Systém pro správu verzí a přístup
+
+    Verzovací systém: Git
+
+    Hosting: GitHub
+
+    Adresa repozitáře: https://github.com/TomasMatonoha/ivs-calc
+
+
