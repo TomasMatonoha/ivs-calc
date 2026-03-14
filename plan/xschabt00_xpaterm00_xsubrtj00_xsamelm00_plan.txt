@@ -19,7 +19,7 @@
 
     xsubrtj00 Jeremy Šubrt: Návrh a implementace grafického uživatelského rozhraní, propojení GUI s matematickou knihovnou, ošetření výpisů chyb uživateli, vytvoření mockupu budoucí verze, nápověda v programu.
 
-    xpaterm00 Marie Patermannová: Implementace matematické logiky a volitelné funkce (logaritmus), debugging, vytvoření CLI programu pro výpočet směrodatné odchylky, provedení profilování a sepsání zprávy z profilování.
+    xpaterm00 Marie Patermannová: Implementace matematické logiky a volitelná funkce (kombinační číslo), debugging, vytvoření CLI programu pro výpočet směrodatné odchylky, provedení profilování a sepsání zprávy z profilování.
 
 
 3. Komunikační kanály a pravidla
