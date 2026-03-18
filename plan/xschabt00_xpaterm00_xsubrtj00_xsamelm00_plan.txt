@@ -6,7 +6,7 @@
 
 	12. 4. 2026 - Hotový profiling, propojení GUI s logikou, mockup
 
-	26. 4. 2026 - Vytvořený Makefile, funkční instalátor/odinstalátor, vygenerovaná a sepsaná dokumentace
+	26. 4. 2026 - Funkční instalátor/odinstalátor, vygenerovaná a sepsaná dokumentace
 
 	28. 4. 2026 - Finální testování kompletního balíku na testovacím virtuálním prostředí (Ubuntu)
 
@@ -15,7 +15,7 @@
 
     xschabt00 Tomáš Schablický (Vedoucí): Projektové řízení, komunikace, vytvoření testovací sady pro matematickou knihovnu (TDD), uživatelská dokumentace (příručka), nastavení generování programové dokumentace.
 
-    xsamelm00 Marek Samel: Správa repozitáře, vytvoření Makefile, řešení závislostí, vytvoření instalátoru a odinstalátoru.
+    xsamelm00 Marek Samel: Správa repozitáře, řešení závislostí, vytvoření instalátoru a odinstalátoru.
 
     xsubrtj00 Jeremy Šubrt: Návrh a implementace grafického uživatelského rozhraní, propojení GUI s matematickou knihovnou, ošetření výpisů chyb uživateli, vytvoření mockupu budoucí verze, nápověda v programu.
 
