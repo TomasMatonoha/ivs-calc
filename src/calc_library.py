@@ -25,7 +25,7 @@ def sqr(a, exp):
         return pow(a, 1/exp)
 
 def power(a, exp):
-    if isinstance(exp, int):
+    if isinstance(exp, int) and exp > 0:
         return pow(a, exp) #umocni cislo exponentem
     else:
         raise AssertionError
