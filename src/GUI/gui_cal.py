@@ -1,10 +1,25 @@
+"""
+@file gui_cal.py
+@brief GUI implementation for calculator
+@author Jeremy Subrt (xsubrtj00)
+@date 2026-04-24
+@version x.x
+@details This module implements a graphical user interface for a calculator using the Tkinter library. It provides basic arithmetic operations, as well as advanced functions such as factorial, power, square root, and permutations.
+"""
+
 import tkinter as tk
 from tkinter import messagebox
 from calc_library import add,sub,mul,div
 
+"""
+@brief CalculatorGUI class
+@details This class defines the structure and functionality of the calculator GUI. It includes methods for building the user interface, handling button clicks and evaluating expressions.
+"""
 class CalculatorGUI:
-
-#Define colors and structure for calculator
+    """
+    @brief __init__ method
+    @details This method initializes the calculator GUI, setting up the main window, defining colors, and calling the method to build the user interface.
+    """
     def __init__(self,root):
         self.COLOR_BG="#1c1c1e"
         self.COLOR_BTN_NUM="#3a3a3c"
@@ -23,12 +38,15 @@ class CalculatorGUI:
         self.advanced_visible=False
         self._build_ui()
 
-#Building GUI
+    """
+    @brief _build_ui method
+    @details This method constructs the user interface of the calculator, including the display area, number buttons, operation buttons, and advanced function buttons.
+    """
     def _build_ui(self):
-        
         self.tool_frame=tk.Frame(self.root,bg=self.COLOR_BG)
         self.tool_frame.pack(fill="x",padx=8,pady=(8,4))
 
+        #mode button
         self.mode_btn=tk.Button(
             self.tool_frame,
             text="Advanced functions",
@@ -36,6 +54,7 @@ class CalculatorGUI:
         )
         self.mode_btn.pack(side="right")
 
+        #display
         self.display = tk.Label(
             self.root,
             textvariable=self.display_var,
@@ -53,8 +72,10 @@ class CalculatorGUI:
         )
         self.content_frame.pack(fill="both",expand=True,padx=8,pady=8)
 
-#Buttons with numbers
 
+        """
+        The following code creates buttons for digits 0-9 and arranges them in a grid layout. Each button is configured with a command to append the corresponding digit to the display when clicked.
+        """
         self.buttons_frame=tk.Frame(self.content_frame,bg=self.COLOR_BG)
         self.buttons_frame.pack(fill="both",expand=True,side="left")
         for c in range(4):
@@ -103,7 +124,9 @@ class CalculatorGUI:
         btn9.grid(row=2,column=2,sticky="nsew",padx=2,pady=2) 
         btn9.configure(bg=self.COLOR_BTN_NUM,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_NUM_ACT)
 
-#Special buttons
+        """
+        The following code creates buttons for utility functions such as clear (C) and backspace (<-). Each button is configured with a command to perform the corresponding action when clicked.
+        """
         btnC=tk.Button(self.buttons_frame,text="C",font=("Arial",16),command=self.clear_display)
         btnC.grid(row=1,column=2,sticky="nsew",padx=2,pady=2)
         btnC.configure(bg=self.COLOR_BTN_UTIL,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_UTIL_ACT)
@@ -112,7 +135,9 @@ class CalculatorGUI:
         btnBackspace.grid(row=1,column=1,sticky="nsew",padx=2,pady=2)
         btnBackspace.configure(bg=self.COLOR_BTN_UTIL,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_UTIL_ACT)
 
-#Buttons with operations
+        """
+        The following code creates buttons for basic arithmetic operations (addition, subtraction, multiplication, division) and the equals button. Each button is configured with a command to append the corresponding symbol to the display or evaluate the expression when clicked.
+        """
         btnAddicion=tk.Button(self.buttons_frame,text="+",font=("Arial",16),command=lambda:self.append_symbol("+"))
         btnAddicion.grid(row=4,column=3,sticky="nsew",padx=2,pady=2)
         btnAddicion.configure(bg=self.COLOR_BTN_OP,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_OP_ACT)
@@ -133,7 +158,9 @@ class CalculatorGUI:
         btnEqual.grid(row=5,column=3,sticky="nsew",padx=2,pady=2)
         btnEqual.configure(bg=self.COLOR_BTN_OP,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_OP_ACT)
 
-#advanced buttons
+        """
+        The following code creates the frame for advanced functions and configures its grid layout. It includes buttons for factorial (!), power (^), square root (√), and permutations (P). Each button is configured with a command to append the corresponding symbol to the display when clicked.
+        """
         self.advanced_frame=tk.Frame(self.content_frame,bg=self.COLOR_BG)
         self.advanced_frame.grid_columnconfigure(0,weight=1)
         for r in range(4):
@@ -155,7 +182,10 @@ class CalculatorGUI:
         btnCombNum.grid(row=0,sticky="nsew",padx=2,pady=2)
         btnCombNum.configure(bg=self.COLOR_BTN_OP,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_OP_ACT)
 
-    #changing modes
+    """
+    @brief toggle_advanced method
+    @details This method toggles the visibility of the advanced function buttons.
+    """
     def toggle_advanced(self):
         if self.advanced_visible==False:
             self.advanced_visible=True
@@ -168,7 +198,11 @@ class CalculatorGUI:
             self.mode_btn.configure(text="Advanced functions")
             self.advanced_frame.pack_forget()
         
-    #adding symbols
+    """
+    @brief append_symbol method
+    @details This method appends a given symbol (number or operator) to the current expression displayed on the calculator.
+    @param symbol The symbol to be appended to the display.
+    """
     def append_symbol(self,symbol):
         
         current_text = self.display_var.get()
@@ -189,16 +223,24 @@ class CalculatorGUI:
         self.display_var.set(new_text)
         print("symbol",symbol)
 
-    #clearing display
+    """
+    @brief clear_display method
+    @details This method clears the current expression displayed on the calculator, resetting it to an empty string.
+    """
     def clear_display(self):
         self.display_var.set("")  
 
-    #
+    """
+    @brief evaluate_expression method
+    @details This method evaluates the current expression displayed on the calculator.
+    """
     def evaluate_expression(self):
         expr=self.display_var.get()
         
     
-    #backspace
+    """
+    @brief backspace method
+    @details This method removes the last character from the current expression displayed on the calculator."""
     def backspace(self):
         expr=self.display_var.get()
         if expr!="":
@@ -208,11 +250,10 @@ class CalculatorGUI:
             self.display_var.set(expr)
 
 
-
-     
-        
-    
-
+"""
+@brief main function
+@details This function initializes the main application window and starts the Tkinter event loop to run the calculator GUI.
+"""
 def main():
     root=tk.Tk()
     CalculatorGUI(root)
