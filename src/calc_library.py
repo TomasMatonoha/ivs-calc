@@ -1,4 +1,29 @@
 
+def comp_input(string):
+   binar_oper = {
+            "+": add,
+            "-": sub,
+            "*": mul,
+            "/": div,
+            "C": comb_num
+
+    }
+
+   unar_oper = {
+           "√": sqr,
+           "!": factorial
+    }
+
+    for sign,oper in unar_oper.items():
+        if sign in string:
+            number = string.replace(sign, "")
+            return oper(float(number))
+
+    for sign,oper in binar_oper.items():
+        if sign in string:
+            number = string.split(sign)
+            return oper(float(number[0]), float(number[1]))
+
 def add(a, b):
     return a+b # funkce vraci sectena cisla
 
