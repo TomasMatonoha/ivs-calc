@@ -5,7 +5,8 @@ def comp_input(string):
             "-": sub,
             "*": mul,
             "/": div,
-            "C": comb_num
+            "^": power,
+            "P": comb_num
 
     }
 
@@ -14,15 +15,37 @@ def comp_input(string):
            "!": factorial
     }
 
-    for sign,oper in unar_oper.items():
+    for sign in ["+", "-"]:
         if sign in string:
-            number = string.replace(sign, "")
-            return oper(float(number))
+            left, right = string.rsplit(sign,1)
+            if sign == "+":
+                return add(comp_input(left), comp_input(right))
+            if sign == "-":
+                return sub(comp_input(left), comp_input(right))
 
-    for sign,oper in binar_oper.items():
+    for sign in ["*","/"]:
         if sign in string:
-            number = string.split(sign)
-            return oper(float(number[0]), float(number[1]))
+            left, right = string.rsplit(sign,1)
+            if sign == "*":
+                return mul(comp_input(left), comp_input(right))
+            if sign == "/":
+                return div(comp_input(left), comp_input(right))
+
+    for sign in ["^", "P"]:
+        if sign in string:
+            left, right = string.rsplit(sign,1)
+            if sign == "^":
+                return power(comp_input(left), comp_input(right))
+            if sign == "P":
+                return comb_num(comp_input(left), comp_input(right))
+
+    for sign, oper in unar_oper.items():
+        if sign in string:
+            number = string.replace(sign,"")
+            return oper(comp_input(number))
+  
+    return float(string)
+
 
 def add(a, b):
     return a+b # funkce vraci sectena cisla
