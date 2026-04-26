@@ -1,4 +1,28 @@
-import math
+
+def comp_input(string):
+   binar_oper = {
+            "+": add,
+            "-": sub,
+            "*": mul,
+            "/": div,
+            "C": comb_num
+
+    }
+
+   unar_oper = {
+           "√": sqr,
+           "!": factorial
+    }
+
+    for sign,oper in unar_oper.items():
+        if sign in string:
+            number = string.replace(sign, "")
+            return oper(float(number))
+
+    for sign,oper in binar_oper.items():
+        if sign in string:
+            number = string.split(sign)
+            return oper(float(number[0]), float(number[1]))
 
 def add(a, b):
     return a+b # funkce vraci sectena cisla
@@ -7,19 +31,48 @@ def sub(a, b):
     return  a - b # odecte cisla
 
 def mul(a,b):
-    return a * b #funkce vynasobi vsechna zadana cisla
+    if isinstance(a, str) or isinstance(b, str):
+        raise TypeError
+    else:
+        return a * b #funkce vynasobi vsechna zadana cisla
 
 def div(a, b):
     return a/b # funkce vydeli dve cisla
 
 def factorial(number):
-    return math.factorial(number) # funkce spocita faktorial
+    if not isinstance(number, int):
+        raise TypeError
+    elif (number < 0):
+        raise ValueError
+    else:
+        result = 1
+        while (number > 0):
+            result*= number
+            number -= 1
+    return result # funkce spocita faktorial
 
 def sqr(a, exp):
-    return pow(a, 1/exp)
+    if (a < 0) and (exp%2 == 0):
+        raise AssertionError
+    else:
+        result = a ** (1/exp)
+        return result
 
 def power(a, exp):
-    return pow(a, exp) #umocni cislo exponentem
+    if isinstance(exp, int) and exp > 0:
+        result = 0
+        reuslt = a ** exp
+        return result #umocni cislo exponentem
+    elif (exp == 0):
+        return 1
+    else:
+        raise AssertionError
 
 def comb_num(n , k):
-    return math.perm(n ,k) #vypocet kombinacniho cisla (n nad k)
+    if not isinstance(n,int) or not isinstance(k,int):
+        raise TypeError
+    elif (n < k) or (n < 0) or (k < 0):
+        raise ValueError
+    else:
+        result = factorial(n)//(factorial (n-k) * factorial(k))
+        return result #vypocet kombinacniho cisla (n nad k)
