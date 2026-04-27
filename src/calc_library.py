@@ -6,7 +6,7 @@ def comp_input(string):
             "*": mul,
             "/": div,
             "^": power,
-            "P": comb_num
+            "C": comb_num
 
     }
 
@@ -31,12 +31,12 @@ def comp_input(string):
             if sign == "/":
                 return div(comp_input(left), comp_input(right))
 
-    for sign in ["^", "P"]:
+    for sign in ["^", "C"]:
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "^":
                 return power(comp_input(left), comp_input(right))
-            if sign == "P":
+            if sign == "C":
                 return comb_num(comp_input(left), comp_input(right))
 
     for sign, oper in unar_oper.items():
@@ -84,7 +84,7 @@ def sqr(a, exp):
 def power(a, exp):
     if isinstance(exp, int) and exp > 0:
         result = 0
-        reuslt = a ** exp
+        result = a ** exp
         return result #umocni cislo exponentem
     elif (exp == 0):
         return 1
