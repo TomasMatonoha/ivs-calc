@@ -6,7 +6,7 @@ def comp_input(string):
             "*": mul,
             "/": div,
             "^": power,
-            "P": comb_num
+            "C": comb_num
 
     }
 
@@ -31,12 +31,12 @@ def comp_input(string):
             if sign == "/":
                 return div(comp_input(left), comp_input(right))
 
-    for sign in ["^", "P"]:
+    for sign in ["^", "C"]:
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "^":
                 return power(comp_input(left), comp_input(right))
-            if sign == "P":
+            if sign == "C":
                 return comb_num(comp_input(left), comp_input(right))
 
     for sign, oper in unar_oper.items():
@@ -46,6 +46,8 @@ def comp_input(string):
   
     return float(string)
 
+def isint(arg):
+    return int(arg) == arg
 
 def add(a, b):
     return a+b # funkce vraci sectena cisla
@@ -63,7 +65,7 @@ def div(a, b):
     return a/b # funkce vydeli dve cisla
 
 def factorial(number):
-    if not isinstance(number, int):
+    if not isint(number):
         raise TypeError
     elif (number < 0):
         raise ValueError
@@ -82,9 +84,9 @@ def sqr(a, exp):
         return result
 
 def power(a, exp):
-    if isinstance(exp, int) and exp > 0:
+    if isint(exp) and exp > 0:
         result = 0
-        reuslt = a ** exp
+        result = a ** exp
         return result #umocni cislo exponentem
     elif (exp == 0):
         return 1
@@ -92,7 +94,7 @@ def power(a, exp):
         raise AssertionError
 
 def comb_num(n , k):
-    if not isinstance(n,int) or not isinstance(k,int):
+    if not isint(n) or not isint(k):
         raise TypeError
     elif (n < k) or (n < 0) or (k < 0):
         raise ValueError
