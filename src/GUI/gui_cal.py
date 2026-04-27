@@ -9,7 +9,7 @@
 
 import tkinter as tk
 from tkinter import messagebox
-from calc_library import add,sub,mul,div
+from calc_library import comp_input
 
 """
 @brief CalculatorGUI class
@@ -43,6 +43,10 @@ class CalculatorGUI:
     @details This method constructs the user interface of the calculator, including the display area, number buttons, operation buttons, and advanced function buttons.
     """
     def _build_ui(self):
+        #focusing on calculation for using keyboard
+        self.root.focus_set()
+        self.root.bind_all("<Key>",self.on_key)
+        
         self.tool_frame=tk.Frame(self.root,bg=self.COLOR_BG)
         self.tool_frame.pack(fill="x",padx=8,pady=(8,4))
 
@@ -178,9 +182,30 @@ class CalculatorGUI:
         btnSqr.grid(row=2,sticky="nsew",padx=2,pady=2)
         btnSqr.configure(bg=self.COLOR_BTN_OP,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_OP_ACT)
 
-        btnCombNum=tk.Button(self.advanced_frame,text="P",font=("Arial",16),command=lambda:self.append_symbol("P"))
+        btnCombNum=tk.Button(self.advanced_frame,text="nCr",font=("Arial",16),command=lambda:self.append_symbol("C"))
         btnCombNum.grid(row=0,sticky="nsew",padx=2,pady=2)
         btnCombNum.configure(bg=self.COLOR_BTN_OP,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_OP_ACT)
+
+
+    """
+    @brief on_key method
+    @details This method enables you to use the keyboard.
+    """
+    def on_key(self,event):
+        ch=event.char
+        key=event.keysym
+        print(ch,key)
+
+        if ch.isdigit():
+            self.append_symbol(ch)
+        elif ch and ch in "+-*/!^C":
+            self.append_symbol(ch)
+        elif key in ("Return","KP_Enter"):
+            self.evaluate_expression()
+        elif key in ("BackSpace","Delete"):
+            self.backspace()
+        elif key=="Escape":
+            self.clear_display()
 
     """
     @brief toggle_advanced method
@@ -236,6 +261,7 @@ class CalculatorGUI:
     """
     def evaluate_expression(self):
         expr=self.display_var.get()
+        self.display_var.set(comp_input(expr))
         
     
     """
