@@ -1,6 +1,6 @@
 
 def comp_input(string):
-   binar_oper = {
+    binar_oper = {
             "+": add,
             "-": sub,
             "*": mul,
@@ -10,7 +10,7 @@ def comp_input(string):
 
     }
 
-   unar_oper = {
+    unar_oper = {
            "√": sqr,
            "!": factorial
     }
