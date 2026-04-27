@@ -65,7 +65,7 @@ def div(a, b):
     return a/b # funkce vydeli dve cisla
 
 def factorial(number):
-    if not isinstance(number, int):
+    if not isint(number):
         raise TypeError
     elif (number < 0):
         raise ValueError
@@ -94,7 +94,7 @@ def power(a, exp):
         raise AssertionError
 
 def comb_num(n , k):
-    if not isinstance(n,int) or not isinstance(k,int):
+    if not isint(n) or not isint(k):
         raise TypeError
     elif (n < k) or (n < 0) or (k < 0):
         raise ValueError
