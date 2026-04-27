@@ -46,6 +46,8 @@ def comp_input(string):
   
     return float(string)
 
+def isint(arg):
+    return int(arg) == arg
 
 def add(a, b):
     return a+b # funkce vraci sectena cisla
@@ -82,7 +84,7 @@ def sqr(a, exp):
         return result
 
 def power(a, exp):
-    if isinstance(exp, int) and exp > 0:
+    if isint(exp) and exp > 0:
         result = 0
         result = a ** exp
         return result #umocni cislo exponentem
