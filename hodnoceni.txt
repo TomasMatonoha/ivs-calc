@@ -1,4 +1,4 @@
-xlogin01 100 (základ GUI a základní mat. operace)
-xlogin02 100 (pokročilé mat. operace)
-xlogin03 90 (profiling, instalátor)
-xlogin04 110 (testy, dokumentace)
+xschabt00 100 (testy, dokumentace, prirucka)
+xpaterm00 100 (veskere mat. operace, profiling)
+xsubrtj00 100 (GUI, mockup)
+xsamelm00 100 (README, instalator)
