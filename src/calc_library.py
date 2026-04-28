@@ -1,4 +1,4 @@
-"""
+"""!
 @file calc_library.py
 @brief Implemetation of mathematical functions
 @author Marie Patermannova (xpaterm00)
@@ -7,13 +7,14 @@
 @details This library provides basic mathematical functions like addition or subtraction in addition to advanced functions like factorial or combinatory number.
 """
 
-"""
-@brief Input handling function
-@details Main logic function which determines what operation to use and returns the result of that operation.
-@param string String of number/s with an operator
-@returns Result of the equation.
-"""
+
 def comp_input(string):
+    """!
+    @brief Input handling function
+    @details Main logic function which determines what operation to use and returns the result of that operation.
+    @param string String of number/s with an operator
+    @returns Result of the equation.
+    """
     binar_oper = {
             "+": add,
             "-": sub,
@@ -60,59 +61,65 @@ def comp_input(string):
   
     return float(string)
 
-"""
-@brief Determines if argument is integer
-@param arg Argument to be checked
-@returns True or false
-"""
+
 def isint(arg):
+    """!
+    @brief Determines if argument is integer
+    @param arg Argument to be checked
+    @returns True or false
+    """
     return int(arg) == arg
 
-"""
-@brief Adds both arguments together
-@param a First number
-@param b Second number
-@returns Added numbers
-"""
+
 def add(a, b):
+    """!
+    @brief Adds both arguments together
+    @param a First number
+    @param b Second number
+    @returns Added numbers
+    """
     return a+b # funkce vraci sectena cisla
 
-"""
-@brief Subtracts second argument from the first
-@param a First number
-@param b Second number
-@returns Second argument subtracted from the first one
-"""
+
 def sub(a, b):
+    """!
+    @brief Subtracts second argument from the first
+    @param a First number
+    @param b Second number
+    @returns Second argument subtracted from the first one
+    """
     return  a - b # odecte cisla
 
-"""
-@brief Multiplies both arguments between eachother
-@param a First number
-@param b Second number
-@returns Multiplication result between first and second argument
-"""
+
 def mul(a,b):
+    """!
+    @brief Multiplies both arguments between eachother
+    @param a First number
+    @param b Second number
+    @returns Multiplication result between first and second argument
+    """
     if isinstance(a, str) or isinstance(b, str):
         raise TypeError
     else:
         return a * b #funkce vynasobi vsechna zadana cisla
 
-"""
-@brief Divides first argument by the second argument
-@param a First number
-@param b Second number
-@returns First number divided by the second number
-"""
+
 def div(a, b):
+    """!
+    @brief Divides first argument by the second argument
+    @param a First number
+    @param b Second number
+    @returns First number divided by the second number
+    """
     return a/b # funkce vydeli dve cisla
 
-"""
-@brief Computes factorial for a given number
-@param number Natural number
-@returns Factorial for the given number
-"""
+
 def factorial(number):
+    """!
+    @brief Computes factorial for a given number
+    @param number Natural number
+    @returns Factorial for the given number
+    """
     if not isint(number):
         raise TypeError
     elif (number < 0):
@@ -124,26 +131,28 @@ def factorial(number):
             number -= 1
     return result # funkce spocita faktorial
 
-"""
-@brief Computes square of a given number with a given exponent
-@param a Number
-@param exp Exponent
-@returns Result of squaring a number with a given exponent
-"""
+
 def sqr(a, exp):
+    """!
+    @brief Computes square of a given number with a given exponent
+    @param a Number
+    @param exp Exponent
+    @returns Result of squaring a number with a given exponent
+    """
     if (a < 0) and (exp%2 == 0):
         raise AssertionError
     else:
         result = a ** (1/exp)
         return result
 
-"""
-@brief Computes a number to a given power
-@param a Number
-@param exp Exponent
-@returns Number to a given power
-"""
+
 def power(a, exp):
+    """!
+    @brief Computes a number to a given power
+    @param a Number
+    @param exp Exponent
+    @returns Number to a given power
+    """
     if isint(exp) and exp > 0:
         result = 0
         result = a ** exp
@@ -153,13 +162,14 @@ def power(a, exp):
     else:
         raise AssertionError
 
-"""
-@brief Computes the maximum number of combinations
-@param n Number of distinct elements
-@param k Number of elements
-@returns Maximum number of combinations
-"""
+
 def comb_num(n , k):
+    """!
+    @brief Computes the maximum number of combinations
+    @param n Number of distinct elements
+    @param k Number of elements
+    @returns Maximum number of combinations
+    """
     if not isint(n) or not isint(k):
         raise TypeError
     elif (n < k) or (n < 0) or (k < 0):

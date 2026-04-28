@@ -1,4 +1,4 @@
-"""
+"""!
 @file gui_cal.py
 @brief GUI implementation for calculator
 @author Jeremy Subrt (xsubrtj00)
@@ -11,16 +11,17 @@ import tkinter as tk
 from tkinter import messagebox
 from calc_library import comp_input
 
-"""
-@brief CalculatorGUI class
-@details This class defines the structure and functionality of the calculator GUI. It includes methods for building the user interface, handling button clicks and evaluating expressions.
-"""
+
 class CalculatorGUI:
-    """
-    @brief __init__ method
-    @details This method initializes the calculator GUI, setting up the main window, defining colors, and calling the method to build the user interface.
+    """!
+    @brief CalculatorGUI class
+    @details This class defines the structure and functionality of the calculator GUI. It includes methods for building the user interface, handling button clicks and evaluating expressions.
     """
     def __init__(self,root):
+        """!
+        @brief __init__ method
+        @details This method initializes the calculator GUI, setting up the main window, defining colors, and calling the method to build the user interface.
+        """
         self.COLOR_BG="#1c1c1e"
         self.COLOR_BTN_NUM="#3a3a3c"
         self.COLOR_BTN_NUM_ACT="#636366"
@@ -38,11 +39,12 @@ class CalculatorGUI:
         self.advanced_visible=False
         self._build_ui()
 
-    """
-    @brief _build_ui method
-    @details This method constructs the user interface of the calculator, including the display area, number buttons, operation buttons, and advanced function buttons.
-    """
+    
     def _build_ui(self):
+        """!
+        @brief _build_ui method
+        @details This method constructs the user interface of the calculator, including the display area, number buttons, operation buttons, and advanced function buttons.
+        """
         #focusing on calculation for using keyboard
         self.root.focus_set()
         self.root.bind_all("<Key>",self.on_key)
@@ -187,11 +189,11 @@ class CalculatorGUI:
         btnCombNum.configure(bg=self.COLOR_BTN_OP,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_OP_ACT)
 
 
-    """
-    @brief on_key method
-    @details This method enables you to use the keyboard.
-    """
     def on_key(self,event):
+        """!
+        @brief on_key method
+        @details This method enables you to use the keyboard.
+        """
         ch=event.char
         key=event.keysym
         print(ch,key)
@@ -207,11 +209,12 @@ class CalculatorGUI:
         elif key=="Escape":
             self.clear_display()
 
-    """
-    @brief toggle_advanced method
-    @details This method toggles the visibility of the advanced function buttons.
-    """
+    
     def toggle_advanced(self):
+        """!
+        @brief toggle_advanced method
+        @details This method toggles the visibility of the advanced function buttons.
+        """
         if self.advanced_visible==False:
             self.advanced_visible=True
             self.root.geometry("420x500")
@@ -223,12 +226,13 @@ class CalculatorGUI:
             self.mode_btn.configure(text="Advanced functions")
             self.advanced_frame.pack_forget()
         
-    """
-    @brief append_symbol method
-    @details This method appends a given symbol (number or operator) to the current expression displayed on the calculator.
-    @param symbol The symbol to be appended to the display.
-    """
+    
     def append_symbol(self,symbol):
+        """!
+        @brief append_symbol method
+        @details This method appends a given symbol (number or operator) to the current expression displayed on the calculator.
+        @param symbol The symbol to be appended to the display.
+        """
         
         current_text = self.display_var.get()
        
@@ -248,26 +252,29 @@ class CalculatorGUI:
         self.display_var.set(new_text)
         print("symbol",symbol)
 
-    """
-    @brief clear_display method
-    @details This method clears the current expression displayed on the calculator, resetting it to an empty string.
-    """
+    
     def clear_display(self):
+        """!
+        @brief clear_display method
+        @details This method clears the current expression displayed on the calculator, resetting it to an empty string.
+        """
         self.display_var.set("")  
 
-    """
-    @brief evaluate_expression method
-    @details This method evaluates the current expression displayed on the calculator.
-    """
+    
     def evaluate_expression(self):
+        """!
+        @brief evaluate_expression method
+        @details This method evaluates the current expression displayed on the calculator.
+        """
         expr=self.display_var.get()
         self.display_var.set(comp_input(expr))
         
-    
-    """
-    @brief backspace method
-    @details This method removes the last character from the current expression displayed on the calculator."""
+
     def backspace(self):
+        """!
+        @brief backspace method
+        @details This method removes the last character from the current expression displayed on the calculator.
+        """
         expr=self.display_var.get()
         if expr!="":
             new_text=expr[:-1]
@@ -276,11 +283,11 @@ class CalculatorGUI:
             self.display_var.set(expr)
 
 
-"""
-@brief main function
-@details This function initializes the main application window and starts the Tkinter event loop to run the calculator GUI.
-"""
 def main():
+    """!
+    @brief main function
+    @details This function initializes the main application window and starts the Tkinter event loop to run the calculator GUI.
+    """
     root=tk.Tk()
     CalculatorGUI(root)
     root.mainloop()
