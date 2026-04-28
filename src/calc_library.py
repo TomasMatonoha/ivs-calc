@@ -56,19 +56,18 @@ def sub(a, b):
     return  a - b # odecte cisla
 
 def mul(a,b):
-    if isinstance(a, str) or isinstance(b, str):
-        raise TypeError
-    else:
-        return a * b #funkce vynasobi vsechna zadana cisla
+    return a * b #funkce vynasobi vsechna zadana cisla
 
 def div(a, b):
-    return a/b # funkce vydeli dve cisla
-
+    if (b != 0):
+        return a/b # funkce vydeli dve cisla
+    else:
+        raise AssertionError(" Nelze dělit nulou")
 def factorial(number):
     if not isint(number):
-        raise TypeError
+        raise TypeError("Není to celé číslo")
     elif (number < 0):
-        raise ValueError
+        raise ValueError("Není to kladné číslo")
     else:
         result = 1
         while (number > 0):
@@ -77,27 +76,26 @@ def factorial(number):
     return result # funkce spocita faktorial
 
 def sqr(a, exp):
+    if (exp == 0):
+        raise AssertionError("Neexistuje nultá odmocnina")
     if (a < 0) and (exp%2 == 0):
-        raise AssertionError
+        raise AssertionError ("Nelze sudá odmocnina ze záporného čísla")
     else:
-        result = a ** (1/exp)
-        return result
+        return a ** (1/exp)
 
 def power(a, exp):
     if isint(exp) and exp > 0:
-        result = 0
-        result = a ** exp
-        return result #umocni cislo exponentem
+        return a ** exp #umocni cislo exponentem
     elif (exp == 0):
         return 1
     else:
-        raise AssertionError
+        raise TypeError("Není to celé číslo nebo exponent je záporný")
 
 def comb_num(n , k):
     if not isint(n) or not isint(k):
-        raise TypeError
+        raise TypeError("Není to celé číslo")
     elif (n < k) or (n < 0) or (k < 0):
-        raise ValueError
+        raise ValueError("čísla nejsou kladná nebo je n menší než k")
     else:
         result = factorial(n)//(factorial (n-k) * factorial(k))
         return result #vypocet kombinacniho cisla (n nad k)
