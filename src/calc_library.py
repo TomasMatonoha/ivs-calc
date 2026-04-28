@@ -95,7 +95,7 @@ def comb_num(n , k):
     if not isint(n) or not isint(k):
         raise TypeError("It's not an integer")
     elif (n < k) or (n < 0) or (k < 0):
-        raise ValueError("NUmbers aren't positive orn is smaller than k")
+        raise ValueError("NUmbers aren't positive or n is less than k")
     else:
         result = factorial(n)//(factorial (n-k) * factorial(k))
         return result
