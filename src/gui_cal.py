@@ -141,6 +141,11 @@ class CalculatorGUI:
         btnBackspace.grid(row=1,column=1,sticky="nsew",padx=2,pady=2)
         btnBackspace.configure(bg=self.COLOR_BTN_UTIL,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_UTIL_ACT)
 
+        btnDot =tk.Button(self.buttons_frame,text=".",font=("Arial",16),command=lambda:self.append_symbol("."))
+        btnDot.grid(row=5,column=2,sticky="nsew",padx=2,pady=2) 
+        btnDot.configure(bg=self.COLOR_BTN_NUM,fg=self.COLOR_TEXT,activebackground=self.COLOR_BTN_NUM_ACT)
+
+
         """
         The following code creates buttons for basic arithmetic operations (addition, subtraction, multiplication, division) and the equals button. Each button is configured with a command to append the corresponding symbol to the display or evaluate the expression when clicked.
         """
@@ -201,7 +206,7 @@ class CalculatorGUI:
 
         if ch.isdigit():
             self.append_symbol(ch)
-        elif ch and ch in "+-*/!^C":
+        elif ch and ch in "+-*/!^C.":
             self.append_symbol(ch)
         elif key in ("Return","KP_Enter"):
             self.evaluate_expression()
@@ -238,7 +243,7 @@ class CalculatorGUI:
         current_text = self.display_var.get()
        
 
-        operands=["+","-","/","*","!","C","^"]
+        operands=["+","-","/","*","!","C","^","."]
 
         
         if symbol in operands:
