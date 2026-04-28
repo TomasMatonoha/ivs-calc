@@ -50,52 +50,52 @@ def isint(arg):
     return int(arg) == arg
 
 def add(a, b):
-    return a+b # funkce vraci sectena cisla
+    return a+b 
 
 def sub(a, b):
-    return  a - b # odecte cisla
+    return  a - b 
 
 def mul(a,b):
-    return a * b #funkce vynasobi vsechna zadana cisla
+    return a * b 
 
 def div(a, b):
     if (b != 0):
-        return a/b # funkce vydeli dve cisla
+        return a/b 
     else:
-        raise AssertionError(" Nelze dělit nulou")
+        raise AssertionError("Cannot be divided by zero")
 def factorial(number):
     if not isint(number):
-        raise TypeError("Není to celé číslo")
+        raise TypeError("It's not an integer")
     elif (number < 0):
-        raise ValueError("Není to kladné číslo")
+        raise ValueError("It's not a positive number")
     else:
         result = 1
         while (number > 0):
             result*= number
             number -= 1
-    return result # funkce spocita faktorial
+    return result 
 
 def sqr(a, exp):
     if (exp == 0):
-        raise AssertionError("Neexistuje nultá odmocnina")
+        raise AssertionError("Doesn't exists zero square root")
     if (a < 0) and (exp%2 == 0):
-        raise AssertionError ("Nelze sudá odmocnina ze záporného čísla")
+        raise AssertionError ("Can't be even square root from negative number")
     else:
         return a ** (1/exp)
 
 def power(a, exp):
     if isint(exp) and exp > 0:
-        return a ** exp #umocni cislo exponentem
+        return a ** exp 
     elif (exp == 0):
         return 1
     else:
-        raise TypeError("Není to celé číslo nebo exponent je záporný")
+        raise TypeError("It's not an integer or exponent is negative")
 
 def comb_num(n , k):
     if not isint(n) or not isint(k):
-        raise TypeError("Není to celé číslo")
+        raise TypeError("It's not an integer")
     elif (n < k) or (n < 0) or (k < 0):
-        raise ValueError("čísla nejsou kladná nebo je n menší než k")
+        raise ValueError("NUmbers aren't positive orn is smaller than k")
     else:
         result = factorial(n)//(factorial (n-k) * factorial(k))
-        return result #vypocet kombinacniho cisla (n nad k)
+        return result
