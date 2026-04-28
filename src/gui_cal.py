@@ -45,7 +45,7 @@ class CalculatorGUI:
         @brief _build_ui method
         @details This method constructs the user interface of the calculator, including the display area, number buttons, operation buttons, and advanced function buttons.
         """
-        #focusing on calculation for using keyboard
+        #focus on keyboard input handling
         self.root.focus_set()
         self.root.bind_all("<Key>",self.on_key)
         
@@ -196,7 +196,8 @@ class CalculatorGUI:
         """
         ch=event.char
         key=event.keysym
-        print(ch,key)
+        #debug code:
+        #print(ch,key)
 
         if ch.isdigit():
             self.append_symbol(ch)
@@ -237,20 +238,21 @@ class CalculatorGUI:
         current_text = self.display_var.get()
        
 
-        operands=["+","-","/","*","!"]
+        operands=["+","-","/","*","!","C","^"]
 
         
         if symbol in operands:
-            #if frst thing what is user going to add is operand then nothing happents
+            #if the frst symbol the user enters is an operator (exept `-`),ifnore it
             if current_text == "" and symbol != "-":
                 return
-            #if user going to add 2 operands right behind then nothing hapents
+            #if the previos character is olready an operator, ignor the new one
             elif current_text != "" and current_text[-1] in operands:
                 return
 
         new_text = current_text+symbol
         self.display_var.set(new_text)
-        print("symbol",symbol)
+        #debug code:
+        #print("symbol",symbol)
 
     
     def clear_display(self):
@@ -266,8 +268,16 @@ class CalculatorGUI:
         @brief evaluate_expression method
         @details This method evaluates the current expression displayed on the calculator.
         """
-        expr=self.display_var.get()
-        self.display_var.set(comp_input(expr))
+        expr=self.display_var.get().strip()
+        
+        #catch errors raised by cal_library
+        try:
+            result=comp_input(expr)
+            self.display_var.set(str(result))
+        except (AssertionError,TypeError,ValueError) as e:
+            err_type=type(e).__name__
+            messagebox.showerror("Calculation error",f"{err_type}: {e}")
+
         
 
     def backspace(self):
