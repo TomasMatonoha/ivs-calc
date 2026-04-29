@@ -34,30 +34,30 @@ def comp_input(string):
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "+":
-                return add(comp_input(left), comp_input(right))
+                return round(add(comp_input(left), comp_input(right)),5)
             if sign == "-":
-                return sub(comp_input(left), comp_input(right))
+                return round(sub(comp_input(left), comp_input(right)),5)
 
     for sign in ["*","/"]:
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "*":
-                return mul(comp_input(left), comp_input(right))
+                return round(mul(comp_input(left), comp_input(right)),5)
             if sign == "/":
-                return div(comp_input(left), comp_input(right))
+                return round(div(comp_input(left), comp_input(right)),5)
 
     for sign in ["^", "C"]:
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "^":
-                return power(comp_input(left), comp_input(right))
+                return round(power(comp_input(left), comp_input(right)),5)
             if sign == "C":
-                return comb_num(comp_input(left), comp_input(right))
+                return round(comb_num(comp_input(left), comp_input(right)),5)
 
     for sign, oper in unar_oper.items():
         if sign in string:
             number = string.replace(sign,"")
-            return oper(comp_input(number))
+            return round(oper(comp_input(number)),5)
   
     return float(string)
 
@@ -98,10 +98,7 @@ def mul(a,b):
     @param b Second number
     @returns Multiplication result between first and second argument
     """
-    if isinstance(a, str) or isinstance(b, str):
-        raise TypeError
-    else:
-        return a * b #funkce vynasobi vsechna zadana cisla
+    return a * b #funkce vynasobi vsechna zadana cisla
 
 
 def div(a, b):
@@ -111,7 +108,10 @@ def div(a, b):
     @param b Second number
     @returns First number divided by the second number
     """
-    return a/b # funkce vydeli dve cisla
+    if (b != 0):
+        return a/b # funkce vydeli dve cisla
+    else:
+        raise AssertionError("Cannot be divided by zero")
 
 
 def factorial(number):
@@ -139,11 +139,12 @@ def sqr(a, exp):
     @param exp Exponent
     @returns Result of squaring a number with a given exponent
     """
-    if (a < 0) and (exp%2 == 0):
-        raise AssertionError
+    if (exp == 0):
+        raise AssertionError("Doesn't exists zero square root")
+    elif (a < 0) and (exp%2 == 0):
+        raise AssertionError("Can't be even square root from negative number")
     else:
-        result = a ** (1/exp)
-        return result
+        return a ** (1/exp)
 
 
 def power(a, exp):
@@ -154,13 +155,11 @@ def power(a, exp):
     @returns Number to a given power
     """
     if isint(exp) and exp > 0:
-        result = 0
-        result = a ** exp
-        return result #umocni cislo exponentem
+        return a ** exp #umocni cislo exponentem
     elif (exp == 0):
         return 1
     else:
-        raise AssertionError
+        raise AssertionError("It's not an integer or exponent is negative")
 
 
 def comb_num(n , k):
@@ -173,7 +172,6 @@ def comb_num(n , k):
     if not isint(n) or not isint(k):
         raise TypeError
     elif (n < k) or (n < 0) or (k < 0):
-        raise ValueError
+        raise ValueError("Numbers aren't positive or n is less than k")
     else:
-        result = factorial(n)//(factorial (n-k) * factorial(k))
-        return result #vypocet kombinacniho cisla (n nad k)
+        return factorial(n)//(factorial (n-k) * factorial(k)) #vypocet kombinacniho cisla (n nad k)
