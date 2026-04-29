@@ -6,7 +6,17 @@
 @version x.x
 @details This library provides basic mathematical functions like addition or subtraction in addition to advanced functions like factorial or combinatory number.
 """
-
+def format_res(value):
+    """!
+    @brief Format of the calculation result
+    @details Convert numbers to integers, or rounds floats to 5 decimal places.
+    @param value Number
+    @returns The formatted number (int, or float rounded to 5 decimal places).
+    """
+    if value == int(value):
+        return int(value)
+    else:
+        return round(value,5)
 
 def comp_input(string):
     """!
@@ -34,30 +44,30 @@ def comp_input(string):
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "+":
-                return round(add(comp_input(left), comp_input(right)),5)
+                return format_res(add(comp_input(left), comp_input(right)))
             if sign == "-":
-                return round(sub(comp_input(left), comp_input(right)),5)
+                return format_res(sub(comp_input(left), comp_input(right)))
 
     for sign in ["*","/"]:
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "*":
-                return round(mul(comp_input(left), comp_input(right)),5)
+                return format_res(mul(comp_input(left), comp_input(right)))
             if sign == "/":
-                return round(div(comp_input(left), comp_input(right)),5)
+                return format_res(div(comp_input(left), comp_input(right)))
 
     for sign in ["^", "C"]:
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "^":
-                return round(power(comp_input(left), comp_input(right)),5)
+                return format_res(power(comp_input(left), comp_input(right)))
             if sign == "C":
-                return round(comb_num(comp_input(left), comp_input(right)),5)
+                return format_res(comb_num(comp_input(left), comp_input(right)))
 
     for sign, oper in unar_oper.items():
         if sign in string:
             number = string.replace(sign,"")
-            return round(oper(comp_input(number)),5)
+            return format_res(oper(comp_input(number)))
   
     return float(string)
 
