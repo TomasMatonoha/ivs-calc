@@ -15,4 +15,4 @@ for i in text:
     total_sqr =calc_library.add(total_sqr, calc_library.power(number, 2))
 x = calc_library.div(total, N)
 s = calc_library.sqr(calc_library.mul(first,calc_library.sub(total_sqr, calc_library.mul(N, calc_library.power(x, 2)))),2)
-print(s) 
+print(s)

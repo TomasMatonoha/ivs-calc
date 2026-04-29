@@ -14,6 +14,9 @@
 !screenshot.png
 !src/
 !src/calc_library.py
+!src/data10.txt
+!src/data1000.txt
+!src/data1000000.txt
 !src/Doxyfile
 !src/gui_cal.py
 !src/Makefile
