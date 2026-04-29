@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+import sys
+import calc_library
+
+list =  sys.stdin.read()
+s = 0
+total = 0
+total_sqr = 0
+text = list.split()
+N = len(text)
+first = calc_library.div(1, calc_library.sub(N,1))
+for i in text:
+    number = float(i)
+    total = calc_library.add(total, number)
+    total_sqr =calc_library.add(total_sqr, calc_library.power(number, 2))
+x = calc_library.div(total, N)
+s = calc_library.sqr(calc_library.mul(first,calc_library.sub(total_sqr, calc_library.mul(N, calc_library.power(x, 2)))),2)
+print(s) 
