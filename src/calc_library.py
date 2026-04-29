@@ -34,30 +34,30 @@ def comp_input(string):
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "+":
-                return add(comp_input(left), comp_input(right))
+                return round(add(comp_input(left), comp_input(right)),5)
             if sign == "-":
-                return sub(comp_input(left), comp_input(right))
+                return round(sub(comp_input(left), comp_input(right)),5)
 
     for sign in ["*","/"]:
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "*":
-                return mul(comp_input(left), comp_input(right))
+                return round(mul(comp_input(left), comp_input(right)),5)
             if sign == "/":
-                return div(comp_input(left), comp_input(right))
+                return round(div(comp_input(left), comp_input(right)),5)
 
     for sign in ["^", "C"]:
         if sign in string:
             left, right = string.rsplit(sign,1)
             if sign == "^":
-                return power(comp_input(left), comp_input(right))
+                return round(power(comp_input(left), comp_input(right)),5)
             if sign == "C":
-                return comb_num(comp_input(left), comp_input(right))
+                return round(comb_num(comp_input(left), comp_input(right)),5)
 
     for sign, oper in unar_oper.items():
         if sign in string:
             number = string.replace(sign,"")
-            return oper(comp_input(number))
+            return round(oper(comp_input(number)),5)
   
     return float(string)
 
