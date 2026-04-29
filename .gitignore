@@ -1,4 +1,8 @@
-src/__pycache__/
-src/latex/
-src/html/
+src/**
+!src/calc_library.py
+!src/Doxyfile
+!src/gui_cal.py
+!src/Makefile
+!src/tests_calc_library.py
+
 *.pyc
