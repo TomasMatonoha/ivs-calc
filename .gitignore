@@ -4,7 +4,8 @@
 !hodnoceni.txt
 !manual.pdf
 !mockup/
-!mockup/mockup.png
+!mockup/mockup-b.png
+!mockup/mockup-w.png
 !plan/
 !plan/xschabt00_xpaterm00_xsubrtj00_xsamelm00_plan.txt
 !profiling/
@@ -16,4 +17,5 @@
 !src/Doxyfile
 !src/gui_cal.py
 !src/Makefile
+!src/stddev
 !src/tests_calc_library.py
