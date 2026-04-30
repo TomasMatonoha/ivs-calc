@@ -2,6 +2,7 @@ KEEP_ITEMS = ../.git \
 ../.gitignore \
 ../debugging.png \
 ../hodnoceni.txt \
+../skutecnost.txt \
 ../manual.pdf \
 ../mockup \
 ../mockup/mockup-b.png \
