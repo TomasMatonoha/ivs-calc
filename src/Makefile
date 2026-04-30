@@ -40,13 +40,30 @@ pack: clean
 	@$(MAKE) doc
 	@$(PYTHON) -m venv .packvenv
 	@.packvenv/bin/pip install -q pyinstaller
-	@mkdir -p ../install
-	@.packvenv/bin/pyinstaller --clean -y --onefile --name=ivs_calc --distpath ../install gui_cal.py
+	@mkdir -p ../install/usr/bin ../install/debian
+	@.packvenv/bin/pyinstaller --clean -y --onefile --name=ivs-calc --distpath ../install/usr/bin gui_cal.py
+
+	@echo "Package: ivs-calc"          >  ../install/debian/control
+	@echo "Section: utils"             >> ../install/debian/control
+	@echo "Priority: optional"         >> ../install/debian/control
+	@echo "Architecture: all"	>> ../install/debian/control
+	@echo "Maintainer: Marek Samel <xsamelm00@fit.vut.cz>" >> ../install/debian/control
+	@echo "Build-Depends: debhelper-compat (= 13), python3, python3-tk, zip" >> ../install/debian/control
+	@echo "Standards-Version: 4.6.0" >> ../install/debian/control
+	@echo "Description: GUI Calculator" >> ../install/debian/control
+	@echo " A calculator application"   >> ../install/debian/control
+
+	@echo "#!/usr/bin/make -f"         >  ../install/debian/rules
+	@echo "%:"                        >> ../install/debian/rules
+	@echo "	dh $$@"                  >> ../install/debian/rules
+	@chmod +x ../install/debian/rules
+
+	@echo "ivs-calc usr/bin/"         >  ../install/debian/install
+
 	@zip -rq "../xschabt00_xpaterm00_xsubrtj00_xsamelm00.zip" doc/ ../install/ ../repo/
 	@$(MAKE) clean
 
 clean:
-	@echo $(DELETE_ITEMS)
 	@rm -rf $(DELETE_ITEMS)
 test: $(PYTEST)
 	@$(PYTEST) tests_calc_library.py
