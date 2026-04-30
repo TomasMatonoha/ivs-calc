@@ -1,0 +1,5 @@
+Rozdělení práce a odpovědností se podařilo dodržet na 100% dle plánu.
+
+Harmonogram a plánované deadliny se nám bohužel nepodařilo dodržet vůbec a proto se spojování jednotlivých částí muselo řešit v časovém presu těsně před finálním odevzdáním.
+Důsledkem špatného time managementu a hrubého nedodržení časového plánu je bohužel to, že se projekt aktuálně nachází v nedobrém stavu.
+Projekt tak odráží spíše narychlo sestavenou funkčnost než odladěný a stabilní software, jaký jsme měli původně v úmyslu odevzdat.
